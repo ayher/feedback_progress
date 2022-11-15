@@ -29,7 +29,7 @@
 }
 
 .rank_item_name{
-    flex: 2;
+    flex: 1;
 }
 
 .rank_item_title{
@@ -37,7 +37,7 @@
 }
 
 .rank_item_interact{
-    flex: 3;
+    flex: 2;
 }
 .rank_item_interact>span{
     display: flex;
