@@ -1,0 +1,46 @@
+
+.home {
+    height: 100%;
+}
+
+.rank_item{
+    width: 100%;
+    height: 7%;
+    margin-top: 1%;
+    border: solid 1px #000;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rank_item>div{
+    border: solid 1px #000000;
+    height: 80%;
+    margin: 0 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rank_item_rank{
+    flex: 1;
+}
+
+.rank_item_name{
+    flex: 2;
+}
+
+.rank_item_title{
+    flex: 4;
+}
+
+.rank_item_interact{
+    flex: 3;
+}
+.rank_item_interact>span{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
