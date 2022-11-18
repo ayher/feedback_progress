@@ -1,6 +1,7 @@
 
 .home {
     height: 100%;
+    padding: 10px;
 }
 
 .rank_item{
@@ -12,6 +13,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    animation: right_in 2s;
 }
 
 .rank_item>div{
@@ -43,4 +45,8 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+@keyframes right_in {
+    0%{transform:translateX(100vw);}
 }

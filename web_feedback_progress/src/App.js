@@ -1,11 +1,11 @@
 import './App.css';
 import Home from './components/home/home.js'
-
+import Article from "./components/article/article";
 function App() {
   return (
     <div className="App">
       <div className="AppHome">
-        <Home />
+        <Article />
       </div>
       <div className="AppNavigation">
           底部
