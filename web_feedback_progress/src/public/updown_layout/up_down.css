@@ -1,0 +1,24 @@
+.up_down {
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.up_down *{
+    width: 100%;
+    height: 100%;
+}
+
+.up{
+    width: 80%;
+    height: 88%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.down{
+    width: 80%;
+    height: 8%;
+    margin: 0 auto;
+    padding: 10px;
+}

@@ -1,4 +1,5 @@
-
+import UpDown from "../../public/updown_layout/up_down";
+import DownNav from "../../public/down_nav/down_nav";
 import './home.css'
 import RankItem from "./rank_item";
 
@@ -11,13 +12,20 @@ function Home() {
 
     var rankItems = []
     for (let i=0;i<RankData.length;i++){
-        rankItems.push(<RankItem{...RankData[i]} />)
+        rankItems.push(<RankItem{...RankData[i]} key={i}/>)
     }
 
+    var nav = [<div>登陆</div>,<div>去创作</div>,<div>其他排名</div>];
+
     return (
-        <div className="home">
-            {rankItems}
-        </div>
+        <UpDown{...{
+            "up":
+                <div className="home">
+                    {rankItems}
+                </div>
+            ,"down":
+                <DownNav{...{nav}} />
+        }}/>
     );
 }
 
