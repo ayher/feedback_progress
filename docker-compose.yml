@@ -4,8 +4,16 @@ services:
   web_feedback_progress:
     platform: linux/x86_64
     build: .
+    image: node:16
     volumes:
       - ./web_feedback_progress:/project/web_feedback_progress
     ports:
       - 3000:3000
-      - 3001:3001
+  data_feedback_progress:
+    platform: linux/x86_64
+    image: go:16
+    build: .
+    volumes:
+      - ./data_feedback_progress:/project/data_feedback_progress
+    ports:
+      - 3008:3008

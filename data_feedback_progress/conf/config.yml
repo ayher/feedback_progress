@@ -1,0 +1,4 @@
+debug: true
+
+feedback_progress_mysql_dsn: root:123456@tcp(127.0.0.1:3306)/feedback_progress?charset=utf8mb4&loc=Asia%2FShanghai&timeout=10s&parseTime=true
+feedback_progress_mysql_max_conn: 20

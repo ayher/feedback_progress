@@ -5,6 +5,8 @@
 /web_feedback_progress/node_modules
 /.pnp
 .pnp.js
+*.log
+go.sum
 
 # testing
 /coverage
