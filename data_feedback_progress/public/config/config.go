@@ -1,7 +1,6 @@
 package config
 
 import (
-	"data_feedback_progress/public/common"
 	"fmt"
 	"github.com/spf13/viper"
 	"os"
@@ -9,13 +8,13 @@ import (
 )
 
 var (
-	Debug      bool
+	Debug bool
 
 	FpMysqlDsn     string
 	FpMysqlMaxConn int
 )
 
-func loadConfig(){
+func loadConfig() {
 	Debug = viper.GetBool("debug")
 
 	FpMysqlDsn = viper.GetString("feedback_progress_mysql_dsn")
@@ -50,7 +49,7 @@ func init() {
 	if p := os.Getenv("CONFIG_PATH"); p != "" {
 		path = p
 	} else {
-		path = fmt.Sprintf("%s/conf", common.App().BasePath)
+		path = fmt.Sprintf("%s/conf", App().BasePath)
 	}
 
 	fmt.Println(path)

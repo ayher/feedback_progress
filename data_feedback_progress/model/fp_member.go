@@ -75,7 +75,7 @@ func (obj *_FpMemberMgr) WithAvatar(avatar string) Option {
 }
 
 // WithIntroduce introduce获取 介绍
-func (obj *_FpMemberMgr) WithIntroduce(introduce int) Option {
+func (obj *_FpMemberMgr) WithIntroduce(introduce string) Option {
 	return optionFunc(func(o *options) { o.query["introduce"] = introduce })
 }
 
@@ -199,14 +199,14 @@ func (obj *_FpMemberMgr) GetBatchFromAvatar(avatars []string) (results []*FpMemb
 }
 
 // GetFromIntroduce 通过introduce获取内容 介绍
-func (obj *_FpMemberMgr) GetFromIntroduce(introduce int) (results []*FpMember, err error) {
+func (obj *_FpMemberMgr) GetFromIntroduce(introduce string) (results []*FpMember, err error) {
 	err = obj.DB.WithContext(obj.ctx).Model(FpMember{}).Where("`introduce` = ?", introduce).Find(&results).Error
 
 	return
 }
 
 // GetBatchFromIntroduce 批量查找 介绍
-func (obj *_FpMemberMgr) GetBatchFromIntroduce(introduces []int) (results []*FpMember, err error) {
+func (obj *_FpMemberMgr) GetBatchFromIntroduce(introduces []string) (results []*FpMember, err error) {
 	err = obj.DB.WithContext(obj.ctx).Model(FpMember{}).Where("`introduce` IN (?)", introduces).Find(&results).Error
 
 	return

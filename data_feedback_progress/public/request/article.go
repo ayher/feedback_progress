@@ -1,0 +1,24 @@
+package request
+
+import (
+	"fmt"
+	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
+)
+
+type NewArticleRequest struct {
+	Title      string `json:"title" binding:"required"`
+	Content    string `json:"content" binding:"required"`
+	SeriesId   int    `json:"series_id" binding:"required"`
+	WordNumber int    `json:"word_number" binding:"required"`
+}
+
+func (r *NewArticleRequest) Validate(ctx *gin.Context) error {
+	if err := ctx.ShouldBind(&r); err != nil {
+		if t, ok := err.(validator.ValidationErrors); ok {
+			return fmt.Errorf("invalid %s", t[0].Field())
+		}
+		return err
+	}
+	return nil
+}

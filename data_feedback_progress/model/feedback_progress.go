@@ -122,7 +122,7 @@ type FpMember struct {
 	Name       string    `gorm:"column:name" json:"name"`              // 昵称
 	Wechat     string    `gorm:"column:wechat" json:"wechat"`          // 微信
 	Avatar     string    `gorm:"column:avatar" json:"avatar"`          // 头像
-	Introduce  int       `gorm:"column:introduce" json:"introduce"`    // 介绍
+	Introduce  string    `gorm:"column:introduce" json:"introduce"`    // 介绍
 	AddTime    time.Time `gorm:"column:add_time" json:"addTime"`       // 记录添加时间
 	UpdateTime time.Time `gorm:"column:update_time" json:"updateTime"` // 记录更新时间
 }

@@ -16,6 +16,7 @@ var (
 	fpMysqlDb   *gorm.DB
 	fpMysqlOnce sync.Once
 )
+
 type MysqlLogger struct {
 	*zap.SugaredLogger
 }

@@ -1,7 +1,6 @@
 package zap
 
 import (
-	"data_feedback_progress/public/common"
 	"data_feedback_progress/public/config"
 	"fmt"
 	"os"
@@ -28,12 +27,12 @@ var (
 func init() {
 
 	FileRotateInfo = &lumberjack.Logger{
-		Filename:   fmt.Sprintf("%s/runtime/logs/default.log", common.App().BasePath),
+		Filename:   fmt.Sprintf("%s/runtime/logs/default.log", config.App().BasePath),
 		MaxSize:    1000,
 		MaxBackups: 7,
 	}
 	FileRotateError = &lumberjack.Logger{
-		Filename:   fmt.Sprintf("%s/runtime/logs/default.error.log", common.App().BasePath),
+		Filename:   fmt.Sprintf("%s/runtime/logs/default.error.log", config.App().BasePath),
 		MaxSize:    1000,
 		MaxBackups: 7,
 	}
