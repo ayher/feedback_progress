@@ -21,3 +21,22 @@ func NewSeries(series interface{}) (interface{}, error) {
 
 	return response.NewSeriesResponse{Msg: "success"}, nil
 }
+
+func GetSeries(series interface{}) (interface{}, error) {
+	seriesReq, ok := series.(*request.GetSeriesRequest)
+	if !ok {
+		return nil, fmt.Errorf("parse err")
+	}
+
+	serieDatas, err := model.FpSeriesMgr(database.GormFp()).GetFromID(seriesReq.Id)
+	if err != nil {
+		return nil, err
+	}
+
+	return response.GetSeriesResponse{
+		SeriesName:     serieDatas.SeriesName,
+		SeriesDescribe: serieDatas.SeriesDescribe,
+		MemberId:       serieDatas.MemberID,
+		Type:           int(serieDatas.Type),
+	}, nil
+}

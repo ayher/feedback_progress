@@ -22,3 +22,17 @@ func (r *NewArticleRequest) Validate(ctx *gin.Context) error {
 	}
 	return nil
 }
+
+type GetArticleRequest struct {
+	Id int `json:"id" binding:"required"`
+}
+
+func (r *GetArticleRequest) Validate(ctx *gin.Context) error {
+	if err := ctx.ShouldBind(&r); err != nil {
+		if t, ok := err.(validator.ValidationErrors); ok {
+			return fmt.Errorf("invalid %s", t[0].Field())
+		}
+		return err
+	}
+	return nil
+}

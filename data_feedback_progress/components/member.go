@@ -22,3 +22,23 @@ func NewMember(req interface{}) (interface{}, error) {
 
 	return response.NewMemberResponse{Msg: "success"}, nil
 }
+
+func GetMember(req interface{}) (interface{}, error) {
+	memberReq, ok := req.(*request.GetMemberRequest)
+	if !ok {
+		return nil, fmt.Errorf("parse err")
+	}
+
+	member, err := model.FpMemberMgr(database.GormFp()).GetFromID(memberReq.MemberId)
+	if err != nil {
+		return nil, err
+	}
+
+	return response.GetMemberResponse{
+		Name:      member.Name,
+		Wechat:    member.Wechat,
+		Avatar:    member.Avatar,
+		Introduce: member.Introduce,
+		AddTime:   member.AddTime,
+	}, nil
+}

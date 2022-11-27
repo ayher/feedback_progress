@@ -22,3 +22,17 @@ func (r *NewMemberRequest) Validate(ctx *gin.Context) error {
 	}
 	return nil
 }
+
+type GetMemberRequest struct {
+	MemberId int `json:"member_id" binding:"required"`
+}
+
+func (r *GetMemberRequest) Validate(ctx *gin.Context) error {
+	if err := ctx.ShouldBind(&r); err != nil {
+		if t, ok := err.(validator.ValidationErrors); ok {
+			return fmt.Errorf("invalid %s", t[0].Field())
+		}
+		return err
+	}
+	return nil
+}

@@ -9,8 +9,23 @@ import (
 	"time"
 )
 
-func GetArticle(interface{}) (interface{}, error) {
-	return "success", nil
+func GetArticle(req interface{}) (interface{}, error) {
+	articleReq, ok := req.(*request.GetArticleRequest)
+	if !ok {
+		return nil, fmt.Errorf("parse err")
+	}
+
+	articles, err := model.FpArticleMgr(database.GormFp()).GetFromID(articleReq.Id)
+	if err != nil {
+		return nil, fmt.Errorf("parse err:%+v", err)
+	}
+
+	return response.GetArticleResponse{
+		Title:      articles.Title,
+		Content:    articles.Content,
+		SeriesId:   articles.SeriesID,
+		WordNumber: articles.WordNumber,
+	}, nil
 }
 
 func NewArticle(req interface{}) (interface{}, error) {

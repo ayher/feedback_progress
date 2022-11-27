@@ -20,15 +20,30 @@ func GetRouter() map[string]RouterMap {
 			Request:   &request.NewMemberRequest{},
 			Response:  &response.NewMemberResponse{},
 		},
+		"/get_member": {
+			Component: components.GetMember,
+			Request:   &request.GetMemberRequest{},
+			Response:  &response.GetMemberResponse{},
+		},
 		"/new_series": {
 			Component: components.NewSeries,
-			Request:   &request.NewSeriesRequest{},
+			Request:   &request.GetSeriesRequest{},
 			Response:  &response.NewSeriesResponse{},
+		},
+		"/get_series": {
+			Component: components.GetSeries,
+			Request:   &request.GetSeriesRequest{},
+			Response:  &response.GetSeriesResponse{},
 		},
 		"/new_article": {
 			Component: components.NewArticle,
 			Request:   &request.NewArticleRequest{},
 			Response:  &response.NewArticleResponse{},
+		},
+		"/get_article": {
+			Component: components.GetArticle,
+			Request:   &request.GetArticleRequest{},
+			Response:  &response.GetArticleResponse{},
 		},
 	}
 }
