@@ -2,8 +2,17 @@ import UpDown from "../../public/updown_layout/up_down";
 import DownNav from "../../public/down_nav/down_nav";
 import './home.css'
 import RankItem from "./rank_item";
+import { getMemberInfo } from "../../redux/action/member";
+import { useSelector,useDispatch } from "react-redux";
 
 function Home() {
+    var dispatch = useDispatch()
+    dispatch(getMemberInfo({
+        "member_id":100000
+    }))
+    const memberInfo = useSelector(state => state.Member);
+    console.log(memberInfo.MemberInfo)
+    
     const RankData=[
         {"rank":"一","name":"默默","title":"给那个焦虑的我","interact":{"love":100,"comment":23,"collect":26}},
         {"rank":"二","name":"默默","title":"给那个焦虑的我","interact":{"love":100,"comment":23,"collect":26}},
