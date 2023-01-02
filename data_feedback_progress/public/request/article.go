@@ -28,11 +28,19 @@ type GetArticleRequest struct {
 }
 
 func (r *GetArticleRequest) Validate(ctx *gin.Context) error {
+	fmt.Println("GetArticleRequest======= 第一次有 ID，第二次没有，然后会重复")
 	if err := ctx.ShouldBind(&r); err != nil {
 		if t, ok := err.(validator.ValidationErrors); ok {
 			return fmt.Errorf("invalid %s", t[0].Field())
 		}
 		return err
 	}
+	return nil
+}
+
+type GetRankArticleRequest struct {
+}
+
+func (r *GetRankArticleRequest) Validate(ctx *gin.Context) error {
 	return nil
 }

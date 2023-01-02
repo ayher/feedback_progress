@@ -45,6 +45,11 @@ func GetRouter() map[string]RouterMap {
 			Request:   &request.GetArticleRequest{},
 			Response:  &response.GetArticleResponse{},
 		},
+		"/get_rank_article": {
+			Component: components.GetRankArticle,
+			Request:   &request.GetRankArticleRequest{},
+			Response:  &response.GetRankArticleResponse{},
+		},
 	}
 }
 
