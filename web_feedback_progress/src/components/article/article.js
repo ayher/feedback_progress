@@ -2,11 +2,26 @@ import ArticleNav from "./article_nav";
 import DownNav from "../../public/down_nav/down_nav";
 import UpDown from "../../public/updown_layout/up_down";
 import {useNavigate} from "react-router-dom";
+import { useLocation } from 'react-router-dom'
+import queryString from 'query-string';
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {getArticleInfo, getRankArticleInfo} from "../../redux/action/article";
 
 function Article() {
-    let articleData = ["默默","系列","给那个焦虑的我"]
-    const navigate = useNavigate()
+    const location = useLocation()
+    const {id}=queryString.parse(location.search)
 
+    var dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getArticleInfo({"id":parseInt(id)}))      //写在函数组件里
+    }, [])
+
+    const article = useSelector(state => state.Article);
+    var info = article.ArticleInfo ?? {}
+    let articleData = [info["member_name"],info["series_name"],info.title]
+
+    const navigate = useNavigate()
     function ToHome(){
         navigate("/fp/home")
     }
@@ -21,7 +36,7 @@ function Article() {
                     </div>
 
                     <div className="article_content">
-                        延迟满足是个好东西，他能让我们暂时中止享受，先去完成最重要的事情，然后才进行享受。在完成任务的同时也没有放弃娱乐，这是最美好的结局。然而，并不是每个人都拥有这种能力，这并不是因为人们不想获得，而是因为获得太困难了，也不知道从何处获得。于是人们就在娱乐了一天之后，看着丝毫未动的任务，陷入自责……
+                        {info.content}
                     </div>
                 </div>
             ,"down":
